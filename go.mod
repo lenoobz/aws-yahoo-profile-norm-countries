@@ -3,6 +3,7 @@ module github.com/lenoobz/aws-yahoo-profile-norm-countries
 go 1.16
 
 require (
+	github.com/aws/aws-lambda-go v1.25.0 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/google/uuid v1.3.0
