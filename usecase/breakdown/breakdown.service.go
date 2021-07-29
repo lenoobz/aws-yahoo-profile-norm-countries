@@ -25,7 +25,7 @@ func NewService(breakdownRepo Repo, yahooService yahoo.Service, log logger.Conte
 
 // AddAssetCountryBreakdown adds new asset country breakdown
 func (s *Service) AddAssetCountryBreakdown(ctx context.Context) error {
-	s.log.Info(ctx, "adding new asset dividends")
+	s.log.Info(ctx, "adding new asset country breakdown")
 
 	profiles, err := s.yahooService.FindYahooProfiles(ctx)
 	if err != nil {
