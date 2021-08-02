@@ -12,11 +12,17 @@ import (
 	"github.com/lenoobz/aws-yahoo-profile-norm-countries/usecase/yahoo"
 )
 
+type YahooProfileCountryRequest struct {
+	Tickers []string `json:"tickers"`
+}
+
 func main() {
 	lambda.Start(lambdaHandler)
 }
 
-func lambdaHandler(ctx context.Context) {
+func lambdaHandler(ctx context.Context, req YahooProfileCountryRequest) {
+	log.Println("lambda handler is called")
+
 	appConf := config.AppConf
 
 	// create new logger
@@ -45,7 +51,7 @@ func lambdaHandler(ctx context.Context) {
 	breakdownService := breakdown.NewService(countryBreakdownRepo, *yahooService, zap)
 
 	// try correlation context
-	if err := breakdownService.AddAssetCountryBreakdown(ctx); err != nil {
+	if err := breakdownService.AddAssetCountryBreakdownByTickers(ctx, req.Tickers); err != nil {
 		log.Fatal("add asset country breakdown failed")
 	}
 }

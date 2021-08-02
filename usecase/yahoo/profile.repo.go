@@ -13,6 +13,7 @@ import (
 // Reader interface
 type Reader interface {
 	FindYahooProfiles(ctx context.Context) ([]*entities.YahooProfile, error)
+	FindYahooProfilesByTickers(ctx context.Context, []string) ([]*entities.YahooProfile, error)
 }
 
 // Writer interface
